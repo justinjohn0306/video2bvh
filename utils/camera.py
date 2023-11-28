@@ -14,6 +14,8 @@ def load_camera_params(file):
             cam_params[f'S{s}'] = {}
             for _, params in f[f'subject{s}'].items():
                 name = params['Name']
+                # Convert the HDF5 Dataset to a NumPy array, then flatten and convert to integers
+                name = np.array(name).flatten().astype(int)
                 name = ''.join([chr(c) for c in name])
                 val = {}
                 val['R'] = np.array(params['R'])
