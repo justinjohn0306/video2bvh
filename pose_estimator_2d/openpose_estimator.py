@@ -26,7 +26,7 @@ class OpenPoseEstimator(Estimator2D):
                 img = img[y:y+h, x:x+w]
             datum = op.Datum()
             datum.cvInputData = img
-            self.opWrapper.emplaceAndPop([datum])
+            self.opWrapper.emplaceAndPop(op.VectorDatum([datum]))
             keypoints = datum.poseKeypoints
             if bbox_list:
                 # TODO: restore coordinate
